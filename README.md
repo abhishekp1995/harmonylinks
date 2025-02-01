@@ -1,2 +1,2 @@
 # harmonylinks
- shortcuts for different harmony links
+ Shortcuts for different harmony links
