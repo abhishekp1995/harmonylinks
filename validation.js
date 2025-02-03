@@ -89,12 +89,12 @@ function redirectUrl() {
     if (opportunityText && !(quoteText || cmsIdText || quoteLinkText)) {
         url_prod = `https://fiorilaunchpad.sap.com/sites#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
         url_test = `https://sapit-home-test-004.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
-        url_dev = `https://sapit-sales-dev-camel.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
+        url_dev = `https://sapit-sales-dev-camel.launchpad.cfapps.eu10.hana.ondemand.com/site?siteId=486ef322-43fb-476a-9823-57eb1ec02c9a#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
     }
     else if (opportunityText && quoteText && !( cmsIdText || quoteLinkText)){
         url_prod = `https://fiorilaunchpad.sap.com/sites?sap-ushell-config=standalone#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
         url_test = `https://sapit-home-test-004.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
-        url_dev = `https://sapit-sales-dev-camel.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
+        url_dev = `https://sapit-sales-dev-camel.launchpad.cfapps.eu10.hana.ondemand.com/site?siteId=486ef322-43fb-476a-9823-57eb1ec02c9a#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
 
     }
     else if (quoteLinkText && !(quoteText || cmsIdText || opportunityText)) {
