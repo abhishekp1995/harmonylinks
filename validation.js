@@ -74,37 +74,60 @@ function showHideErrorMessage(alertMessage, message, duration) {
 //Redirect to the respective page 
 function redirectUrl() {
     var alertMessage = document.getElementById('alertMessage');
+    var isvalidURL = true;
+    var url_prod = null;
+    var url_test = null;
+    var url_dev = null;
+
+    const systemDropdown = document.getElementById('systemDropdown').value;
     const quoteText = document.getElementById('quoteText').value.trim();
     const opportunityText = document.getElementById('opportunityText').value.trim();
     const cmsIdText = document.getElementById('cmsIdText').value.trim();
     const quoteLinkText = document.getElementById('quoteLinkText').value.trim();
-    if (quoteText && !(opportunityText || cmsIdText || quoteLinkText)) {
-        const url = `https://example.com?opportunityText=${encodeURIComponent(quoteText)}`;
-        // Redirect to the URL
-        window.location.href = url;
+
+    //set URL based on filled field values
+    if (opportunityText && !(quoteText || cmsIdText || quoteLinkText)) {
+        url_prod = `https://fiorilaunchpad.sap.com/sites#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
+        url_test = `https://sapit-home-test-004.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
+        url_dev = `https://sapit-sales-dev-camel.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}`;
     }
-    else if (opportunityText && !(quoteText || cmsIdText || quoteLinkText)) {
-        // Create the URL with opportunityText as a parameter
-        const url = `https://example.com?opportunityText=${encodeURIComponent(opportunityText)}`;
-        // Redirect to the URL
-        window.location.href = url;
+    else if (opportunityText && quoteText && !( cmsIdText || quoteLinkText)){
+        url_prod = `https://fiorilaunchpad.sap.com/sites?sap-ushell-config=standalone#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
+        url_test = `https://sapit-home-test-004.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
+        url_dev = `https://sapit-sales-dev-camel.launchpad.cfapps.eu10.hana.ondemand.com/site#harmonyquote-Display&/Opportunity/${encodeURIComponent(opportunityText)}/Quotedetails/${encodeURIComponent(quoteText)}`;
+
     }
     else if (quoteLinkText && !(quoteText || cmsIdText || opportunityText)) {
-        const url = `https://example.com?opportunityText=${encodeURIComponent(quoteLinkText)}`;
-        // Redirect to the URL
-        window.location.href = url;
+        url_prod = `https://sap-ies-sales.cpq.cloud.sap/fed/sap/Cart/Edit?cartCompositeNumber=${encodeURIComponent(quoteLinkText)}`;
+        url_test = `https://sap-ies-sales-test.cpq.cloud.sap/fed/sap/Cart/Edit?cartCompositeNumber=${encodeURIComponent(quoteLinkText)}`;
+        url_dev = `https://sap-ies-sales-dev.cpq.cloud.sap/fed/sap/Cart/Edit?cartCompositeNumber=${encodeURIComponent(quoteLinkText)}`;
     }
     else if (cmsIdText && !(quoteText || quoteLinkText || opportunityText)) {
-        const url = `https://example.com?opportunityText=${encodeURIComponent(cmsIdText)}`;
-        // Redirect to the URL
-        window.location.href = url;
+        url_prod = `https://isp.wdf.sap.corp/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
+        url_test = `https://isp.wdf.sap.corp/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
+        url_dev = `https://isp.wdf.sap.corp/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
     }
-    //Show error message if more than one field given
+
     else {
-        message = "Invalid input combination ! Not more than 1 field should be filled";
+        isvalidURL = false
+    }
+
+    //Show error message if more than one field given
+    if (!isvalidURL) {
+        message = "Invalid input combination !";
         showHideErrorMessage(alertMessage, message, 5000);
     }
-}
+
+    else {
+            // Redirect to the URL based on system dropdown
+            if (systemDropdown == 1)
+                window.location.href = url_prod;
+            if (systemDropdown == 2)
+                window.location.href = url_test;
+            if (systemDropdown == 3)
+                window.location.href = url_dev;
+        }
+    }
 
 // Add event listener to the Submit button
 document.getElementById('submitButton').addEventListener('click', function (event) {
