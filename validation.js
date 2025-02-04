@@ -104,8 +104,8 @@ function redirectUrl() {
     }
     else if (cmsIdText && !(quoteText || quoteLinkText || opportunityText)) {
         url_prod = `https://isp.wdf.sap.corp/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
-        url_test = `https://isp.wdf.sap.corp/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
-        url_dev = `https://isp.wdf.sap.corp/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
+        url_test = `https://ist.hec.net.sap/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
+        url_dev = `https://isd.hec.net.sap/sap/bc/webdynpro/sap/zv_cms_rcm_wda_case?sap-wd-configId=ZV_CMS_RCM_WAC_CASE&CASE_MODE=D&CASE_ID=${encodeURIComponent(cmsIdText)}`;
     }
 
     else {
