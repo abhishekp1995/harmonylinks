@@ -22,8 +22,19 @@
     </div>
 
     <div class="container" style="margin-top: 3rem;">
+
         <!-- System Dropdown and Labels -->
         <div class="d-flex gap-3 justify-content-start align-items-center">
+            <label for="systemVersion" class="h5 m-0">Version:</label>
+            <select class="form-select w-25" id="systemVersion" aria-label="System Version">
+                <option value="0" selected>Choose Version</option>
+                <option value="1">CPQ 1.0</option>
+                <option value="2">CPQ 2.0</option>
+            </select>
+        </div>
+
+        <!-- System Dropdown and Labels -->
+        <div class="d-flex gap-3 justify-content-start align-items-center mt-4">
             <label for="systemDropdown" class="h5 m-0">System:</label>
             <select class="form-select w-25" id="systemDropdown" aria-label="System Selection">
                 <option value="0" selected>Choose System</option>
@@ -35,13 +46,13 @@
 
         <!-- Quote, Opportunity, CMS ID, Quote Link -->
         <div class="d-flex gap-3 justify-content-start align-items-center mt-4">
-            <label for="quoteText" class="h5 m-0">Quote:</label>
-            <input type="text" id="quoteText" class="form-control w-25" placeholder="Enter quote ID">
+            <label for="opportunityText" class="h5 m-0">Opportunity:</label>
+            <input type="text" id="opportunityText" class="form-control w-25" placeholder="Enter opportunity ID">
         </div>
 
         <div class="d-flex gap-3 justify-content-start align-items-center mt-4">
-            <label for="opportunityText" class="h5 m-0">Opportunity:</label>
-            <input type="text" id="opportunityText" class="form-control w-25" placeholder="Enter opportunity ID">
+            <label for="quoteText" class="h5 m-0">Quote:</label>
+            <input type="text" id="quoteText" class="form-control w-25" placeholder="Enter quote ID">
         </div>
 
         <div class="d-flex gap-3 justify-content-start align-items-center mt-4">
